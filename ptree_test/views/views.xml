@@ -1,0 +1,163 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="ptree_test.list">
+      <field name="name">ptree_test list</field>
+      <field name="model">ptree_test.ptree_test</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="ptree_test.action_window">
+      <field name="name">ptree_test window</field>
+      <field name="res_model">ptree_test.ptree_test</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="ptree_test.action_server">
+      <field name="name">ptree_test server</field>
+      <field name="model_id" ref="model_ptree_test_ptree_test"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="ptree_test" id="ptree_test.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="ptree_test.menu_1" parent="ptree_test.menu_root"/>
+    <menuitem name="Menu 2" id="ptree_test.menu_2" parent="ptree_test.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="ptree_test.menu_1_list" parent="ptree_test.menu_1"
+              action="ptree_test.action_window"/>
+    <menuitem name="Server to list" id="ptree_test" parent="ptree_test.menu_2"
+              action="ptree_test.action_server"/>
+-->
+
+
+    <!--VISTAS DE APARCAMIENTO-->
+    <record model="ir.ui.view" id="ptree_test.aparcamiento_list_view">
+      <field name="name">garaje.aparcamiento.view.tree</field>
+      <field name="model">garaje.aparcamiento</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="plazas"/>
+        </tree>
+      </field>
+    </record>
+
+    <!--VISTA DE APARCAMIENTO FORMULARIO-->
+    <record model="ir.ui.view" id="ptree_test.aparcamiento_form_view">
+      <field name="name">garaje.aparcamiento.view.form</field>
+      <field name="model">garaje.aparcamiento</field>
+      <field name="arch" type="xml">
+        <form string="Formulario de aparcamiento">
+          <sheet>
+
+            <div class="oe_title">
+              <label class="oe_edit_only" for="name" string="Dirección"/>
+              <h1>
+                <field name="name" placeholder="Dirección"/>
+              </h1>
+            </div>
+
+            <group>
+              <separator string="Información General"/>
+              <field name="plazas"/>
+            </group>
+
+            <!-- <group>
+              <field name="activate"/>
+            </group> -->
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!--VISTAS DE COCHE-->
+    <record model="ir.ui.view" id="ptree_test.coche_list_view">
+      <field name="name">garaje.coche.view.tree</field>
+      <field name="model">garaje.coche</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="modelo"/>
+          <field name="construido"/>
+          <field name="consumo" />
+          <field name="averiado" />
+        </tree>
+      </field>
+    </record>
+
+    <!--VISTAS DE MANTENIMIENTO-->
+    <record model="ir.ui.view" id="ptree_test.mantenimiento_list_view">
+      <field name="name">garaje.mantenimiento.view.tree</field>
+      <field name="model">garaje.mantenimiento</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fecha"/>
+          <field name="tipo"/>
+          <field name="coste" />
+        </tree>
+      </field>
+    </record>
+
+    <!--DEFINICION DE MENUS-->
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ptree_test.aparcamiento_action_window">
+      <field name="name">Aparcamiento</field>
+      <field name="res_model">garaje.aparcamiento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="ptree_test.coche_action_window">
+      <field name="name">Coches</field>
+      <field name="res_model">garaje.coche</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="ptree_test.mantenimiento_action_window">
+      <field name="name">Mantenimientos</field>
+      <field name="res_model">garaje.mantenimiento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <!--Este de aqui abajo es el nombre e id que se mostrara con la nav de apps-->
+    <menuitem name="Garaje" id="ptree_test.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Aparcamientos" id="ptree_test.aparcamiento_menu" parent="ptree_test.menu_root" action="ptree_test.aparcamiento_action_window"/>
+    <menuitem name="Coches" id="ptree_test.coche_menu" parent="ptree_test.menu_root" action="ptree_test.coche_action_window"/>
+    <menuitem name="Mantenimientos" id="ptree_test.mantenimiento_menu" parent="ptree_test.menu_root" action="ptree_test.mantenimiento_action_window"/>
+
+  </data>
+</odoo>
